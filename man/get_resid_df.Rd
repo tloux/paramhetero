@@ -23,27 +23,19 @@ This function is used within \code{residual_plots} and is not likely to be of
 much use to end users.
 }
 \examples{
-# Simulate data
+ states = as.data.frame(state.x77)
+ 
+ m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+         subset=state.region=='Northeast')
+ m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+         subset=state.region=='South')
+ m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+         subset=state.region=='North Central')
+ m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+         subset=state.region=='West')
+ 
+ mList = list(m1, m2, m3, m4)
 
-N = 50
-
-m = rep(1:4, each=N)
-
-x1 = rnorm(n=N*4)
-x2 = rnorm(n=N*4)
-x3 = rnorm(n=N*4)
-
-y = x1 + x2 + x3 + rnorm(n=N*4)
-
-dat = data.frame(m, x1, x2, x3, y)
-
-m1 = lm(y ~ x1 + x2 + x3, data=dat, subset=m==1)
-m2 = lm(y ~ x1 + x2 + x3, data=dat, subset=m==2)
-m3 = lm(y ~ x1 + x2 + x3, data=dat, subset=m==3)
-m4 = lm(y ~ x1 + x2 + x3, data=dat, subset=m==4)
-
-mList = list(m1, m2, m3, m4)
-
-get_resid_df(model_list = mList)
+ get_resid_df(model_list = mList)
 
 }

@@ -30,26 +30,18 @@ analysis as they don't relate to interactions or "effect modification," but
 would be most analogous to an average effect.
 }
 \examples{
- # Simulate data
-
- N = 500
-
- m = rep(1:4, each=N)
-
- x1 = rnorm(n=N*4) x2 = rnorm(n=N*4) x3 = rnorm(n=N*4)
-
- y = x1 + x2 + x3 + rnorm(n=N*4)
-
- dat = data.frame(m, x1, x2, x3, y)
-
- m1 = lm(y ~ x1 + x2 + x3, data=dat, subset=m==1)
- m2 = lm(y ~ x1 + x2 + x3, data=dat, subset=m==2)
- m3 = lm(y ~ x1 + x2 + x3, data=dat, subset=m==3)
- m4 = lm(y ~ x1 + x2 + x3, data=dat, subset=m==4)
-
+ states = as.data.frame(state.x77)
+ 
+ m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+         subset=state.region=='Northeast')
+ m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+         subset=state.region=='South')
+ m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+         subset=state.region=='North Central')
+ m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+         subset=state.region=='West')
+ 
  mList = list(m1, m2, m3, m4)
-
- # Create data frame
 
  ci_matrix(model_list = mList, levels = 0.95)
 }
