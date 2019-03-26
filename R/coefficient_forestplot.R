@@ -44,9 +44,23 @@
 coefficient_forestplot = function(model_list, model_names = NULL,
                                   levels = c(0.95, 0.50), horiz = TRUE){
 
+  # check assumptions -------------------------------------
+  
+  model_list_checks(model_list)
+  
+  if(!is.null(model_names)){
+    model_names_checks(model_list, model_names)
+  }
+  
+  
+  # get confidence intervals ------------------------------
+  
   confint_matrix = ci_matrix(model_list=model_list, model_names=model_names,
                              levels = levels)
-
+  
+  
+  # create plot -------------------------------------------
+  
   mydodge = 0.2 * (length(model_list) - 1)
 
   fplot = ggplot(data = confint_matrix, aes(x = Variable, y = Estimate,

@@ -36,6 +36,17 @@
 
 residual_plots = function(model_list, model_names=NULL, thm=NULL){
 
+  # check assumptions -------------------------------------
+  
+  model_list_checks(model_list)
+  
+  if(!is.null(model_names)){
+    model_names_checks(model_list, model_names)
+  }
+  
+  
+  # create plots ------------------------------------------
+  
   resid_hist = residual_histogram(model_list, model_names) +
     guides(color=FALSE, fill=FALSE)
 
@@ -56,7 +67,19 @@ residual_plots = function(model_list, model_names=NULL, thm=NULL){
 
 #'@rdname residual_plots
 residual_histogram = function(model_list, model_names=NULL){
-
+  
+  
+  # check assumptions -------------------------------------
+  
+  model_list_checks(model_list)
+  
+  if(!is.null(model_names)){
+    model_names_checks(model_list, model_names)
+  }
+  
+  
+  # create plot -------------------------------------------
+  
   resid_df = get_resid_df(model_list, model_names)
 
   ggplot(data=resid_df, aes(x=Residuals, color=Model, fill=Model)) +
@@ -68,9 +91,20 @@ residual_histogram = function(model_list, model_names=NULL){
 
 #'@rdname residual_plots
 residual_boxplot = function(model_list, model_names=NULL){
-
+  
+  # check assumptions -------------------------------------
+  
+  model_list_checks(model_list)
+  
+  if(!is.null(model_names)){
+    model_names_checks(model_list, model_names)
+  }
+  
+  
+  # create plot -------------------------------------------
+  
   resid_df = get_resid_df(model_list, model_names)
-
+  
   ggplot(data=resid_df, aes(x=Model, y=Residuals, color=Model, fill=Model)) +
     geom_boxplot(alpha=0.3) +
     xlab('') +

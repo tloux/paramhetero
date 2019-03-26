@@ -41,6 +41,11 @@
 coefficient_manova = function(model_list){
 
 
+  # check assumptions -------------------------------------
+  
+  model_list_checks(model_list)
+  
+  
   # basic statistics --------------------------------------
 
   M = length(model_list)

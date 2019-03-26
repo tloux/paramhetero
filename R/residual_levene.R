@@ -35,6 +35,11 @@
 residual_levene = function(model_list){
 
 
+  # check assumptions -------------------------------------
+  
+  model_list_checks(model_list)
+  
+  
   # basic statistics --------------------------------------
 
   M = length(model_list)
@@ -78,7 +83,7 @@ residual_levene = function(model_list){
   pval = 1 - pf(fstat, df1=dfnum, df2=dfdenom)
 
 
-  # return ------------------------------------------------
+  # return results ----------------------------------------
 
   ret = c(f=fstat, df1=dfnum, df2=dfdenom, p=pval)
   return(ret)

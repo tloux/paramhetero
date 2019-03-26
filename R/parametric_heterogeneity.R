@@ -45,19 +45,36 @@
 
 parametric_heterogeneity = function(model_list, model_names = NULL){
 
-  # covariate vector
+  
+  # check assumptions -------------------------------------
+  
+  model_list_checks(model_list)
+  
+  if(!is.null(model_names)){
+    model_names_checks(model_list, model_names)
+  }
+  
+  
+  # test covariate vectors --------------------------------
+  
   manova_results = coefficient_manova(model_list = model_list)
-
-  # coefficient-wise tests
+  
+  
+  # coefficient-wise tests --------------------------------
+  
   anova_results = coefficient_anova(model_list = model_list,
                                     model_names = model_names)
-
-  # residual SD
+  
+  
+  # test residual SD --------------------------------------
+  
   if(class(model_list[[1]]) == 'lm'){
     levene_results = residual_levene(model_list = model_list)
   }
 
-  # combine, format results
+  
+  # combine, format results -------------------------------
+  
   res_stats = c('f', 'df1', 'df2', 'p')
 
   results0 = rbind(manova_results[res_stats],
@@ -68,6 +85,9 @@ parametric_heterogeneity = function(model_list, model_names = NULL){
                                 anova_results$Coefficient,
                                 'Residuals'),
                        results0)
-
+  
+  
+  # return results ----------------------------------------
+  
   return(results)
 }

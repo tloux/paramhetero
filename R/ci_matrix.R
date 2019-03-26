@@ -39,18 +39,13 @@ ci_matrix = function(model_list, model_names = NULL, levels = c(0.95, 0.50)){
 
   # check assumptions -------------------------------------
 
-  for(j in 2:length(model_list)){
-    for(k in 1:(length(model_list) - 1)){
-      if(!setequal(names(coef(model_list[[j]])), names(coef(model_list[[k]]))))
-      {stop('Models must share same predictors.')}
-    }
+  model_list_checks(model_list)
+  
+  if(!is.null(model_names)){
+    model_names_checks(model_list, model_names)
   }
 
   if(!(length(levels) <= 2)) stop('Can compute at most 2 confidence levels.')
-
-  if(!is.null(model_names) & (length(model_names) != length(model_list))){
-    stop('model_list and model_names not same length.')
-  }
 
 
   # format model summary data -----------------------------
@@ -101,5 +96,9 @@ ci_matrix = function(model_list, model_names = NULL, levels = c(0.95, 0.50)){
       }
     }
   }
+  
+  
+  # return results ----------------------------------------
+  
   return(plotdat)
 }

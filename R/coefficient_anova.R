@@ -40,7 +40,19 @@
 
 
 coefficient_anova = function(model_list, model_names = NULL, padj=p.adjust.methods){
-
+  
+  
+  # check assumptions -------------------------------------
+  
+  model_list_checks(model_list)
+  
+  if(!is.null(model_names)){
+    model_names_checks(model_list, model_names)
+  }
+  
+  
+  # basic statistics --------------------------------------
+  
   if(is.null(model_names)) model_names = paste('Model', 1:length(model_list))
 
   b_mat = sapply(model_list,function(m){
@@ -66,6 +78,9 @@ coefficient_anova = function(model_list, model_names = NULL, padj=p.adjust.metho
   rownames(anova_mat) = NULL
   anova_res = data.frame(Coefficient = rownames(b_mat), anova_mat)
   anova_res$Coefficient = as.character(anova_res$Coefficient)
-
+  
+  
+  # return results ----------------------------------------
+  
   return(anova_res)
 }

@@ -31,6 +31,17 @@
 
 get_resid_df = function(model_list, model_names=NULL){
 
+  # check assumptions -------------------------------------
+  
+  model_list_checks(model_list)
+  
+  if(!is.null(model_names)){
+    model_names_checks(model_list, model_names)
+  }
+  
+  
+  # format residuals into data frame ----------------------
+  
   resid_list = lapply(1:length(model_list), function(i){
 
     mname = ifelse(is.null(model_names), i, model_names[i])
@@ -40,6 +51,9 @@ get_resid_df = function(model_list, model_names=NULL){
   })
 
   resid_df = do.call(rbind, resid_list)
-
+  
+  
+  # return results ----------------------------------------
+  
   return(resid_df)
 }
