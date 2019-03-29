@@ -1,40 +1,40 @@
-#' Create forestplot of model coefficients with confidence intervals.
+#'Create forest plot of model coefficients with confidence intervals.
 #'
-#' Create a ggplot forestplot of model coefficients with confidence intervals.
+#'Create a ggplot forest plot of model coefficients with confidence intervals.
 #'
-#' The forest plot orders variables along the axis and colors the data by model.
-#' If \code{model_names = NULL}, the default, models are numbered sequentially
-#' in the order they appear in \code{model_list} (Model 1, Model 2, Model 3,
-#' etc.). If two confidence levels are provided the shorter interval is drawn
-#' with a thicker line.
+#'The forest plot groups variables along the axis determined by the \code{horiz}
+#'parameter and colors the data by model. If \code{model_names = NULL}, the
+#'default, models are numbered sequentially in the order they appear in
+#'\code{model_list} (Model 1, Model 2, Model 3, etc.). If two confidence levels
+#'are provided the shorter interval is drawn with a thicker line.
 #'
-#' @param model_list A list of regression models.
-#' @param model_names A list of names for the regression models (default is
-#'   \code{NULL}).
-#' @param levels A list of levels of confidence for confidence intervals (max 2
-#'   levels).
-#' @param horiz Toggle whether confidence intervals are displayed horizontally
-#'   or vertically. default is set to horizontal (\code{horiz = TRUE}).
+#'@param model_list A list of regression models.
+#'@param model_names A list of names for the regression models (default is
+#'  \code{NULL}).
+#'@param levels A list of levels of confidence for confidence intervals (max 2
+#'  levels).
+#'@param horiz Toggle whether confidence intervals are displayed horizontally or
+#'  vertically. Default is set to \code{TRUE}.
 #'
-#' @return A ggplot object to compare model coefficient estimates with their
-#'   corresponding confidence interval(s), grouped by coefficient.
+#'@return A ggplot object to compare model coefficient estimates with their
+#'  corresponding confidence interval(s), grouped by coefficient.
 #'
 #'@examples
 #'  states = as.data.frame(state.x77)
-#'  
-#'  m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'
+#'  m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='Northeast')
-#'  m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='South')
-#'  m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='North Central')
-#'  m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='West')
-#'  
+#'
 #'  mList = list(m1, m2, m3, m4)
 #'
 #'  coefficient_forestplot(model_list = mList,
-#'                         model_names =c('Northeast', 'South', 
+#'                         model_names =c('Northeast', 'South',
 #'                                        'North Central', 'West'),
 #'                         horiz = FALSE)
 #'
@@ -45,22 +45,22 @@ coefficient_forestplot = function(model_list, model_names = NULL,
                                   levels = c(0.95, 0.50), horiz = TRUE){
 
   # check assumptions -------------------------------------
-  
+
   model_list_checks(model_list)
-  
+
   if(!is.null(model_names)){
     model_names_checks(model_list, model_names)
   }
-  
-  
+
+
   # get confidence intervals ------------------------------
-  
+
   confint_matrix = ci_matrix(model_list=model_list, model_names=model_names,
                              levels = levels)
-  
-  
+
+
   # create plot -------------------------------------------
-  
+
   mydodge = 0.2 * (length(model_list) - 1)
 
   fplot = ggplot(data = confint_matrix, aes(x = Variable, y = Estimate,

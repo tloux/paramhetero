@@ -15,12 +15,12 @@ ci_matrix(model_list, model_names = NULL, levels = c(0.95, 0.5))
 \item{levels}{At most two confidence levels.}
 }
 \value{
-A data frame of model coefficients with their respective
- confidence intervals.
+A data frame of model coefficients with their respective confidence
+ intervals.
 }
 \description{
-Create confidence intervals for all coefficients across all models, excluding
-the intercept.
+Create confidence intervals for all coefficients across models, excluding the
+intercept.
 }
 \details{
 This function is called from \code{\link{coefficient_forestplot}} and might
@@ -31,16 +31,16 @@ would be most analogous to an average effect.
 }
 \examples{
  states = as.data.frame(state.x77)
- 
- m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+
+ m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='Northeast')
- m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='South')
- m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='North Central')
- m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='West')
- 
+
  mList = list(m1, m2, m3, m4)
 
  ci_matrix(model_list = mList, levels = 0.95)

@@ -13,8 +13,8 @@ coefficient_anova(model_list, model_names = NULL,
 \item{model_names}{A list of names for the regression models (default is
 \code{NULL}).}
 
-\item{padj}{Adjustment of p-values for multiple comparisons. Must come from
-\code{\link{p.adjust.methods}}.}
+\item{padj}{Adjustment of p-values for multiple comparisons. Value must come
+from \code{\link{p.adjust.methods}}.}
 }
 \value{
 Data frame of coefficient information. Data frame includes coefficient
@@ -31,20 +31,20 @@ test for equality of regression parameters across models.
 }
 \examples{
  states = as.data.frame(state.x77)
- 
- m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+
+ m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='Northeast')
- m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='South')
- m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='North Central')
- m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='West')
- 
+
  mList = list(m1, m2, m3, m4)
 
- coefficient_anova(model_list = mList, 
-                   model_names = c('Northeast', 'South', 
+ coefficient_anova(model_list = mList,
+                   model_names = c('Northeast', 'South',
                                    'North Central', 'West'))
 
 }

@@ -1,7 +1,7 @@
 #'Create confidence intervals for all coefficients.
 #'
-#'Create confidence intervals for all coefficients across all models, excluding
-#'the intercept.
+#'Create confidence intervals for all coefficients across models, excluding the
+#'intercept.
 #'
 #'This function is called from \code{\link{coefficient_forestplot}} and might
 #'not be of direct use for most users. Confidence intervals are obtained through
@@ -14,21 +14,21 @@
 #'  \code{NULL}).
 #'@param levels At most two confidence levels.
 #'
-#'@return A data frame of model coefficients with their respective
-#'  confidence intervals.
+#'@return A data frame of model coefficients with their respective confidence
+#'  intervals.
 #'
 #'@examples
 #'  states = as.data.frame(state.x77)
-#'  
-#'  m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'
+#'  m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='Northeast')
-#'  m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='South')
-#'  m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='North Central')
-#'  m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='West')
-#'  
+#'
 #'  mList = list(m1, m2, m3, m4)
 #'
 #'  ci_matrix(model_list = mList, levels = 0.95)
@@ -40,7 +40,7 @@ ci_matrix = function(model_list, model_names = NULL, levels = c(0.95, 0.50)){
   # check assumptions -------------------------------------
 
   model_list_checks(model_list)
-  
+
   if(!is.null(model_names)){
     model_names_checks(model_list, model_names)
   }
@@ -96,9 +96,9 @@ ci_matrix = function(model_list, model_names = NULL, levels = c(0.95, 0.50)){
       }
     }
   }
-  
-  
+
+
   # return results ----------------------------------------
-  
+
   return(plotdat)
 }
