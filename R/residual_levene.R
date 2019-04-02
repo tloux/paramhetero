@@ -15,16 +15,16 @@
 #'
 #'@examples
 #'  states = as.data.frame(state.x77)
-#'  
-#'  m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'
+#'  m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='Northeast')
-#'  m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='South')
-#'  m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='North Central')
-#'  m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='West')
-#'  
+#'
 #'  mList = list(m1, m2, m3, m4)
 #'
 #'  residual_levene(model_list = mList)
@@ -36,10 +36,10 @@ residual_levene = function(model_list){
 
 
   # check assumptions -------------------------------------
-  
+
   model_list_checks(model_list)
-  
-  
+
+
   # basic statistics --------------------------------------
 
   M = length(model_list)
@@ -78,7 +78,7 @@ residual_levene = function(model_list){
   dfdenom = dfSum
 
 
-  fstat = (numerator / dfnum) / (denominator / dedenom)
+  fstat = (numerator / dfnum) / (denominator / dfdenom)
 
   pval = 1 - pf(fstat, df1=dfnum, df2=dfdenom)
 

@@ -74,7 +74,8 @@ coefficient_anova = function(model_list, model_names = NULL, padj=p.adjust.metho
   })
 
   anova_mat = cbind(b_mat, t(anova_mat0))
-  anova_mat[,8] = p.adjust(anova_mat[,8], method=padj)
+  anova_mat[, ncol(anova_mat)] = p.adjust(anova_mat[, ncol(anova_mat)],
+                                          method=padj)
   rownames(anova_mat) = NULL
   anova_res = data.frame(Coefficient = rownames(b_mat), anova_mat)
   anova_res$Coefficient = as.character(anova_res$Coefficient)
