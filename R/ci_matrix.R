@@ -32,6 +32,8 @@
 #'  mList = list(m1, m2, m3, m4)
 #'
 #'  ci_matrix(model_list = mList, levels = 0.95)
+#'
+#'@export
 
 
 ci_matrix = function(model_list, model_names = NULL, levels = c(0.95, 0.50)){

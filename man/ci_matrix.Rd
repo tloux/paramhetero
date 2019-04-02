@@ -44,4 +44,5 @@ would be most analogous to an average effect.
  mList = list(m1, m2, m3, m4)
 
  ci_matrix(model_list = mList, levels = 0.95)
+
 }
