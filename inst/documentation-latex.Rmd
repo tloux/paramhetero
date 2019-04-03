@@ -1,0 +1,34 @@
+---
+title: "LaTeX code for documentation files"
+author: "Travis Loux"
+date: "April 13, 2018"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# coefficient_manova
+
+$$
+\mathbf{Y}_m = \beta_{m0} + \mathbf{X}_m \mathbf{B}_m
+$$
+
+$$
+\mathbf{B}_1 = \mathbf{B}_2 = ... = \mathbf{B}_m
+$$
+
+
+# coef_welch
+
+\begin{align}
+y_i &= \beta_{10} + \beta_{11}x_{i1} + \beta_{12}x_{i2} + \beta_{1i} \\
+y_i &= \beta_{20} + \beta_{21}x_{i1} + \beta_{22}x_{i2} + \beta_{2i} \\
+y_i &= \beta_{30} + \beta_{31}x_{i1} + \beta_{32}x_{i2} + \beta_{3i}
+\end{align}
+
+$H_0: \beta_{11} = \beta_{21} = \beta_{31}$
+
+$x_1$
+
+$x_2$
+
