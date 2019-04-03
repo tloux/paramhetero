@@ -52,5 +52,5 @@ This is the workhorse function for \code{\link{coefficient_anova}}.
 \references{
 Liu, H. "Comparing Welch's ANOVA, a Kruskal-Wallis Test and
   Traditional ANOVA in Case of Heterogeneity of Variance." Master's Thesis.
-  Available at \link{https://scholarscompass.vcu.edu/etd/3985/}.
+  Available at \url{https://scholarscompass.vcu.edu/etd/3985/}.
 }
