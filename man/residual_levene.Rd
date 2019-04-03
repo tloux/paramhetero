@@ -25,16 +25,16 @@ only.
 }
 \examples{
  states = as.data.frame(state.x77)
- 
- m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+
+ m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='Northeast')
- m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='South')
- m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='North Central')
- m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='West')
- 
+
  mList = list(m1, m2, m3, m4)
 
  residual_levene(model_list = mList)

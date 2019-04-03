@@ -3,13 +3,14 @@
 #'Compare coefficient vectors using MANOVA across multiple models.
 #'
 #'Removes intercept from each coefficient vector, then performs a MANOVA
-#'analysis to compare remaining regression coefficients across models. Specifically, for models
+#'analysis to compare remaining regression coefficients across models.
+#'Specifically, for models with matrix notation
 #'
-#'\deqn{\mathbf{Y}_m = \beta_{m0} + \mathbf{X}_m \mathbf{B}_m}
+#'\deqn{\mathbf{Y}_m = \beta_{m0} + \mathbf{X}_m \mathbf{B}_m}{Ym = bm0 + Xm Bm}
 #'
 #'for \eqn{i = 1, 2, ..., M}, test the null hypothesis
 #'
-#'\deqn{\mathbf{B}_1 = \mathbf{B}_2 = ... = \mathbf{B}_m}
+#'\deqn{\mathbf{B}_1 = \mathbf{B}_2 = ... = \mathbf{B}_m}{B1 = B2 = ... = Bm}
 #'
 #'against the alternative hypothesis that not all coefficient vectors are equal.
 #'
@@ -21,16 +22,16 @@
 #'
 #'@examples
 #'  states = as.data.frame(state.x77)
-#'  
-#'  m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'
+#'  m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='Northeast')
-#'  m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='South')
-#'  m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='North Central')
-#'  m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='West')
-#'  
+#'
 #'  mList = list(m1, m2, m3, m4)
 #'
 #'  coefficient_manova(model_list = mList)
@@ -42,10 +43,10 @@ coefficient_manova = function(model_list){
 
 
   # check assumptions -------------------------------------
-  
+
   model_list_checks(model_list)
-  
-  
+
+
   # basic statistics --------------------------------------
 
   M = length(model_list)

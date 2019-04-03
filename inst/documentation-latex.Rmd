@@ -20,11 +20,11 @@ $$
 
 # coef_welch
 
-\begin{align}
-y_i &= \beta_{10} + \beta_{11}x_{i1} + \beta_{12}x_{i2} + \beta_{1i} \\
-y_i &= \beta_{20} + \beta_{21}x_{i1} + \beta_{22}x_{i2} + \beta_{2i} \\
+\begin{align*}
+y_i &= \beta_{10} + \beta_{11}x_{i1} + \beta_{12}x_{i2} + \beta_{1i} \cr
+y_i &= \beta_{20} + \beta_{21}x_{i1} + \beta_{22}x_{i2} + \beta_{2i} \cr
 y_i &= \beta_{30} + \beta_{31}x_{i1} + \beta_{32}x_{i2} + \beta_{3i}
-\end{align}
+\end{align*}
 
 $H_0: \beta_{11} = \beta_{21} = \beta_{31}$
 

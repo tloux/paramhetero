@@ -19,17 +19,14 @@ Compare coefficient vectors using MANOVA across multiple models.
 }
 \details{
 Removes intercept from each coefficient vector, then performs a MANOVA
-analysis to compare remaining regression coefficients across models. Specifically, for models
+analysis to compare remaining regression coefficients across models.
+Specifically, for models with matrix notation
 
-$$
-\mathbf{Y}_m = \beta_{m0} + \mathbf{X}_m \mathbf{B}_m
-$$
+\deqn{\mathbf{Y}_m = \beta_{m0} + \mathbf{X}_m \mathbf{B}_m}{Ym = bm0 + Xm Bm}
 
 for \eqn{i = 1, 2, ..., M}, test the null hypothesis
 
-$$
-\mathbf{B}_1 = \mathbf{B}_2 = ... = \mathbf{B}_m
-$$
+\deqn{\mathbf{B}_1 = \mathbf{B}_2 = ... = \mathbf{B}_m}{B1 = B2 = ... = Bm}
 
 against the alternative hypothesis that not all coefficient vectors are equal.
 }

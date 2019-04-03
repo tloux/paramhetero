@@ -12,15 +12,15 @@
 #'
 #' For example, given three models
 #'
-#' \deqn{y_i = \beta_{10} + \beta_{11}x_{i1} + \beta_{12}x_{i2} + \epsilon_{1i}}
+#' \deqn{y_i = \beta_{10} + \beta_{11}x_{i1} + \beta_{12}x_{i2} + \epsilon_{1i}}{yi = b10 + b11 xi1 + b12 xi2 + e1i}
 #'
-#' \deqn{y_i = \beta_{20} + \beta_{21}x_{i1} + \beta_{22}x_{i2} + \epsilon_{2i}}
+#' \deqn{y_i = \beta_{20} + \beta_{21}x_{i1} + \beta_{22}x_{i2} + \epsilon_{2i}}{yi = b20 + b21 xi1 + b22 xi2 + e2i}
 #'
-#' \deqn{y_i = \beta_{30} + \beta_{31}x_{i1} + \beta_{32}x_{i2} + \epsilon_{3i}}
+#' \deqn{y_i = \beta_{30} + \beta_{31}x_{i1} + \beta_{32}x_{i2} + \epsilon_{3i}}{yi = b30 + b31 xi1 + b32 xi2 + e3i}
 #'
-#' Would test hypotheses \eqn{H_0: \beta_{11} = \beta_{21} = \beta_{31}} against
-#' the alternative that not all three parameters for \eqn{x_1} are equal. (Or
-#' similarly for the parameters of \eqn{x_2}.)
+#' Would test hypotheses \eqn{H_0: \beta_{11} = \beta_{21} = \beta_{31}}{b11 = b21 = b31} against
+#' the alternative that not all three parameters for \eqn{x_1}{x1} are equal. (Or
+#' similarly for the parameters of \eqn{x_2}{x2}.)
 #'
 #' This is the workhorse function for \code{\link{coefficient_anova}}.
 #'
