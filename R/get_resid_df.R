@@ -44,7 +44,7 @@ get_resid_df = function(model_list, model_names=NULL){
 
   resid_list = lapply(1:length(model_list), function(i){
 
-    mname = ifelse(is.null(model_names), i, model_names[i])
+    mname = ifelse(is.null(model_names), paste('Model',i), model_names[i])
     resids = residuals(model_list[[i]])
 
     data.frame(Model = mname, Residuals = resids)
