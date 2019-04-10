@@ -8,8 +8,6 @@
 #'those functions for more detail.
 #'
 #'@param model_list A list of regression models.
-#'@param model_names A list of names for the regression models (default is
-#'  \code{NULL}).
 #'
 #'@return Data frame containing name of items tested for heterogeneity,
 #'  F-statistics for homogeneity tests, numerator degrees of freedom,
@@ -24,16 +22,16 @@
 #'
 #'@examples
 #'  states = as.data.frame(state.x77)
-#'  
-#'  m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'
+#'  m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='Northeast')
-#'  m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='South')
-#'  m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='North Central')
-#'  m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+#'  m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
 #'          subset=state.region=='West')
-#'  
+#'
 #'  mList = list(m1, m2, m3, m4)
 #'
 #'  parametric_heterogeneity(model_list = mList,
@@ -43,38 +41,33 @@
 #'@export
 
 
-parametric_heterogeneity = function(model_list, model_names = NULL){
+parametric_heterogeneity = function(model_list){
 
-  
+
   # check assumptions -------------------------------------
-  
+
   model_list_checks(model_list)
-  
-  if(!is.null(model_names)){
-    model_names_checks(model_list, model_names)
-  }
-  
-  
+
+
   # test covariate vectors --------------------------------
-  
+
   manova_results = coefficient_manova(model_list = model_list)
-  
-  
+
+
   # coefficient-wise tests --------------------------------
-  
-  anova_results = coefficient_anova(model_list = model_list,
-                                    model_names = model_names)
-  
-  
+
+  anova_results = coefficient_anova(model_list = model_list)
+
+
   # test residual SD --------------------------------------
-  
+
   if(class(model_list[[1]]) == 'lm'){
     levene_results = residual_levene(model_list = model_list)
   }
 
-  
+
   # combine, format results -------------------------------
-  
+
   res_stats = c('f', 'df1', 'df2', 'p')
 
   results0 = rbind(manova_results[res_stats],
@@ -85,9 +78,9 @@ parametric_heterogeneity = function(model_list, model_names = NULL){
                                 anova_results$Coefficient,
                                 'Residuals'),
                        results0)
-  
-  
+
+
   # return results ----------------------------------------
-  
+
   return(results)
 }

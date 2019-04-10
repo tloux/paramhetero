@@ -4,13 +4,10 @@
 \alias{parametric_heterogeneity}
 \title{Test coefficient and residual heterogeneity across models.}
 \usage{
-parametric_heterogeneity(model_list, model_names = NULL)
+parametric_heterogeneity(model_list)
 }
 \arguments{
 \item{model_list}{A list of regression models.}
-
-\item{model_names}{A list of names for the regression models (default is
-\code{NULL}).}
 }
 \value{
 Data frame containing name of items tested for heterogeneity,
@@ -28,16 +25,16 @@ those functions for more detail.
 }
 \examples{
  states = as.data.frame(state.x77)
- 
- m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+
+ m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='Northeast')
- m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='South')
- m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='North Central')
- m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='West')
- 
+
  mList = list(m1, m2, m3, m4)
 
  parametric_heterogeneity(model_list = mList,
