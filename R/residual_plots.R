@@ -35,7 +35,7 @@
 #'@export
 
 
-residual_plots = function(model_list, model_names=NULL, bwd, thm=NULL){
+residual_plots = function(model_list, model_names=NULL, bwd='nrd0', thm=NULL){
 
   # check assumptions -------------------------------------
 
@@ -66,6 +66,7 @@ residual_plots = function(model_list, model_names=NULL, bwd, thm=NULL){
 }
 
 
+#'@export
 #'@rdname residual_plots
 residual_density = function(model_list, model_names=NULL, bwd='nrd0'){
 
@@ -90,6 +91,7 @@ residual_density = function(model_list, model_names=NULL, bwd='nrd0'){
 }
 
 
+#'@export
 #'@rdname residual_plots
 residual_boxplot = function(model_list, model_names=NULL){
 
