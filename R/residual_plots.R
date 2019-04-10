@@ -48,7 +48,7 @@ residual_plots = function(model_list, model_names=NULL, bwd, thm=NULL){
 
   # create plots ------------------------------------------
 
-  resid_dens = residual_density(model_list, model_names) +
+  resid_dens = residual_density(model_list, model_names, bw=bwd) +
     guides(color=FALSE, fill=FALSE)
 
   resid_box = residual_boxplot(model_list, model_names) +
