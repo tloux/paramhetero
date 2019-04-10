@@ -2,13 +2,13 @@
 % Please edit documentation in R/residual_plots.R
 \name{residual_plots}
 \alias{residual_plots}
-\alias{residual_histogram}
+\alias{residual_density}
 \alias{residual_boxplot}
 \title{Plot residuals.}
 \usage{
-residual_plots(model_list, model_names = NULL, thm = NULL)
+residual_plots(model_list, model_names = NULL, bwd, thm = NULL)
 
-residual_histogram(model_list, model_names = NULL)
+residual_density(model_list, model_names = NULL, bwd = "nrd0")
 
 residual_boxplot(model_list, model_names = NULL)
 }
@@ -18,33 +18,35 @@ residual_boxplot(model_list, model_names = NULL)
 \item{model_names}{A list of names for the regression models (default is
 \code{NULL}).}
 
+\item{bwd}{Bandwidth for density plots (default is \code{"nrd0"}).}
+
 \item{thm}{A ggplot2 theme for the output plots.}
 }
 \value{
 A residual plot for inputted regression models.
 }
 \description{
-Plots residuals of multiple models as a histogram and a boxplot.
+Plots residuals of multiple models as density plots and boxplots.
 }
 \details{
-\code{residual_plots} plots histograms and boxplots in a two row, single
-column format. \code{residual_histogram} and \code{residual_boxplots} plot the
+\code{residual_plots} plots density plots and boxplots in a two row, single
+column format. \code{residual_density} and \code{residual_boxplots} plot the
 component pieces. If \code{model_names = NULL}, the default, models are
 numbered sequentially in the order they appear in \code{model_list} (Model 1,
 Model 2, Model 3, etc.).
 }
 \examples{
  states = as.data.frame(state.x77)
- 
- m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+
+ m1 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='Northeast')
- m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m2 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='South')
- m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m3 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='North Central')
- m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states, 
+ m4 = lm(`Life Exp` ~ Income + Illiteracy, data=states,
          subset=state.region=='West')
- 
+
  mList = list(m1, m2, m3, m4)
 
  residual_plots(model_list = mList, thm=theme_minimal())
