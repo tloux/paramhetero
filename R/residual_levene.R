@@ -32,12 +32,16 @@
 #'@export
 
 
-residual_levene = function(model_list){
+residual_levene = function(model_list, model_names=NULL){
 
 
   # check assumptions -------------------------------------
 
   model_list_checks(model_list)
+
+  if(!is.null(model_names)){
+    model_names_checks(model_list, model_names)
+  }
 
 
   # basic statistics --------------------------------------
@@ -51,6 +55,14 @@ residual_levene = function(model_list){
 
   dfList = lapply(model_list, function(m) m$df.residual)
   dfSum = Reduce('+', dfList)
+
+  resid_sds = sapply(model_list, function(m) summary(m)$sigma)
+
+  if(is.null(model_names)){
+    names(resid_sds) = paste('Model', 1:length(model_list))
+  }else{
+    names(resid_sds) = model_names
+  }
 
 
   # Levene's test statistic, p-value ----------------------
@@ -85,6 +97,6 @@ residual_levene = function(model_list){
 
   # return results ----------------------------------------
 
-  ret = c(f=fstat, df1=dfnum, df2=dfdenom, p=pval)
+  ret = c(resid_sds, f=fstat, df1=dfnum, df2=dfdenom, p=pval)
   return(ret)
 }

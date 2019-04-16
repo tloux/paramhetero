@@ -26,8 +26,7 @@
 #'  mList = list(m1, m2, m3, m4)
 #'
 #'  get_resid_df(model_list = mList)
-#'
-#'@export
+
 
 get_resid_df = function(model_list, model_names=NULL){
 
