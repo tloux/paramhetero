@@ -4,10 +4,13 @@
 \alias{residual_levene}
 \title{Compare regression residual standard deviation across multiple models.}
 \usage{
-residual_levene(model_list)
+residual_levene(model_list, model_names = NULL)
 }
 \arguments{
 \item{model_list}{A list of regression models.}
+
+\item{model_names}{A list of names for the regression models (default is
+\code{NULL}).}
 }
 \value{
 Numeric vector of Levene test results. This includes an F-statistic,

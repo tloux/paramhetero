@@ -8,6 +8,8 @@
 #'only.
 #'
 #'@param model_list A list of regression models.
+#'@param model_names A list of names for the regression models (default is
+#'  \code{NULL}).
 #'
 #'@return Numeric vector of Levene test results. This includes an F-statistic,
 #'  numerator  degrees of freedom, denominator degrees of freedom, and the

@@ -52,17 +52,19 @@ residual_plots = function(model_list, model_names=NULL, bwd='nrd0', thm=NULL){
     guides(color=FALSE, fill=FALSE)
 
   resid_box = residual_boxplot(model_list, model_names) +
-    guides(color='legend', fill='legend') +
-    theme(axis.text.y=element_blank(), legend.position='bottom')
+    ggplot2::guides(color='legend', fill='legend') +
+    ggplot2::theme(axis.text.y=ggplot2::element_blank(),
+                   legend.position='bottom')
 
   if(!is.null(thm)){
     resid_dens = resid_dens + thm
     resid_box = resid_box + thm +
-      theme(axis.text.y=element_blank(), legend.position='bottom')
+      ggplot2::theme(axis.text.y=ggplot2::element_blank(),
+                     legend.position='bottom')
   }
 
-  ggarrange(resid_dens, resid_box, heights = c(2, 1),
-            align = 'v', ncol = 1, nrow = 2)
+  ggpubr::ggarrange(resid_dens, resid_box, heights = c(2, 1),
+                    align = 'v', ncol = 1, nrow = 2)
 }
 
 
@@ -84,10 +86,11 @@ residual_density = function(model_list, model_names=NULL, bwd='nrd0'){
 
   resid_df = get_resid_df(model_list, model_names)
 
-  ggplot(data=resid_df, aes(x=Residuals, color=Model, fill=Model)) +
-    geom_density(alpha=0.3, position='identity', bw=bwd) +
-    ylab('') +
-    theme(axis.text.y=element_blank(), axis.ticks.y=element_blank())
+  ggplot2::ggplot(data=resid_df, ggplot2::aes(x=Residuals, color=Model, fill=Model)) +
+    ggplot2::geom_density(alpha=0.3, position='identity', bw=bwd) +
+    ggplot2::ylab('') +
+    ggplot2::theme(axis.text.y=ggplot2::element_blank(),
+                   axis.ticks.y=ggplot2::element_blank())
 }
 
 
@@ -108,10 +111,11 @@ residual_boxplot = function(model_list, model_names=NULL){
 
   resid_df = get_resid_df(model_list, model_names)
 
-  ggplot(data=resid_df, aes(x=Model, y=Residuals, color=Model, fill=Model)) +
-    geom_boxplot(alpha=0.3) +
-    xlab('') +
-    guides(color=FALSE, fill=FALSE) +
-    theme(axis.ticks.y=element_blank()) +
-    coord_flip()
+  ggplot2::ggplot(data=resid_df, ggplot2::aes(x=Model, y=Residuals,
+                                              color=Model, fill=Model)) +
+    ggplot2::geom_boxplot(alpha=0.3) +
+    ggplot2::xlab('') +
+    ggplot2::guides(color=FALSE, fill=FALSE) +
+    ggplot2::theme(axis.ticks.y=ggplot2::element_blank()) +
+    ggplot2::coord_flip()
 }

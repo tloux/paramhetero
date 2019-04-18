@@ -63,27 +63,30 @@ coefficient_forestplot = function(model_list, model_names = NULL,
 
   mydodge = 0.2 * (length(model_list) - 1)
 
-  fplot = ggplot(data = confint_matrix, aes(x = Variable, y = Estimate,
-                                            colour = Model)) +
-    geom_pointrange(aes(ymin = ci1_lo, ymax = ci1_hi), fatten=5,
-                    position = position_dodge(width = mydodge)) +
-    xlab('') +
-    ylab('Coefficient estimates')
+  fplot = ggplot2::ggplot(data = confint_matrix,
+                          ggplot2::aes(x = Variable, y = Estimate,
+                                       colour = Model)) +
+    ggplot2::geom_pointrange(ggplot2::aes(ymin = ci1_lo, ymax = ci1_hi),
+                             fatten=5,
+                             position = ggplot2::position_dodge(width = mydodge)) +
+    ggplot2::xlab('') +
+    ggplot2::ylab('Coefficient estimates')
 
   if(ncol(confint_matrix) == 7){
     fplot = fplot +
-      geom_linerange(aes(ymin = ci2_lo, ymax = ci2_hi), size = 1.5,
-                     position = position_dodge(width = mydodge))
+      ggplot2::geom_linerange(ggplot2::aes(ymin = ci2_lo, ymax = ci2_hi),
+                              size = 1.5,
+                              position = ggplot2::position_dodge(width = mydodge))
   }
 
   if(horiz){
     fplot = fplot +
-      scale_x_discrete(limits = rev(unique(confint_matrix$Variable))) +
-      scale_colour_discrete(breaks = rev(sort(confint_matrix$Model))) +
-      coord_flip()
+      ggplot2::scale_x_discrete(limits = rev(unique(confint_matrix$Variable))) +
+      ggplot2::scale_colour_discrete(breaks = rev(sort(confint_matrix$Model))) +
+      ggplot2::coord_flip()
   }else{
     fplot = fplot +
-      scale_x_discrete(limits = confint_matrix$Variable[confint_matrix$Model == unique(confint_matrix$Model)[1]])
+      ggplot2::scale_x_discrete(limits = confint_matrix$Variable[confint_matrix$Model == unique(confint_matrix$Model)[1]])
   }
 
 

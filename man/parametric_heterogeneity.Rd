@@ -37,9 +37,7 @@ those functions for more detail.
 
  mList = list(m1, m2, m3, m4)
 
- parametric_heterogeneity(model_list = mList,
-                          model_names = c('Northeast', 'South',
-                                          'North Central', 'West'))
+ parametric_heterogeneity(model_list = mList)
 
 }
 \seealso{
