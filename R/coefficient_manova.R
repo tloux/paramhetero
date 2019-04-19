@@ -36,6 +36,8 @@
 #'
 #'  coefficient_manova(model_list = mList)
 #'
+#'@importFrom stats coefficients vcov pf
+#'
 #'@export
 
 

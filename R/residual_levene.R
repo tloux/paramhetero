@@ -31,6 +31,8 @@
 #'
 #'  residual_levene(model_list = mList)
 #'
+#'@importFrom stats pf
+#'
 #'@export
 
 

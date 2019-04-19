@@ -36,6 +36,8 @@
 #'                    model_names = c('Northeast', 'South',
 #'                                    'North Central', 'West'))
 #'
+#'@importFrom stats p.adjust.methods vcov p.adjust
+#'
 #'@export
 
 

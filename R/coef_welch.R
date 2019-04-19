@@ -37,6 +37,8 @@
 #'   Traditional ANOVA in Case of Heterogeneity of Variance." Master's Thesis.
 #'   Available at \url{https://scholarscompass.vcu.edu/etd/3985/}.
 #'
+#' @importFrom stats weighted.mean pf
+#'
 #' @export
 
 
