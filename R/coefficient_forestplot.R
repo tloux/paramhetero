@@ -53,6 +53,16 @@ coefficient_forestplot = function(model_list, model_names = NULL,
   }
 
 
+  # the following is just from R CMD check will not affect code
+  Variable = NULL
+  Estimate = NULL
+  Model = NULL
+  ci1_lo = NULL
+  ci1_hi = NULL
+  ci2_lo = NULL
+  ci2_hi = NULL
+
+
   # get confidence intervals ------------------------------
 
   confint_matrix = ci_matrix(model_list=model_list, model_names=model_names,

@@ -82,6 +82,11 @@ residual_density = function(model_list, model_names=NULL, bw='nrd0'){
   }
 
 
+  # the following is just from R CMD check will not affect code
+  Residuals = NULL
+  Model = NULL
+
+
   # create plot -------------------------------------------
 
   resid_df = get_resid_df(model_list, model_names)
@@ -105,6 +110,11 @@ residual_boxplot = function(model_list, model_names=NULL){
   if(!is.null(model_names)){
     model_names_checks(model_list, model_names)
   }
+
+
+  # the following is just from R CMD check will not affect code
+  Residuals = NULL
+  Model = NULL
 
 
   # create plot -------------------------------------------
