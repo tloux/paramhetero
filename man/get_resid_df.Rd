@@ -37,4 +37,5 @@ much use to end users.
  mList = list(m1, m2, m3, m4)
 
  paramhetero:::get_resid_df(model_list = mList)
+
 }

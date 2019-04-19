@@ -26,6 +26,8 @@
 #'  mList = list(m1, m2, m3, m4)
 #'
 #'  paramhetero:::get_resid_df(model_list = mList)
+#'
+#'@importFrom stats residuals
 
 
 get_resid_df = function(model_list, model_names=NULL){
