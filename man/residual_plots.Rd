@@ -6,10 +6,10 @@
 \alias{residual_boxplot}
 \title{Plot residuals.}
 \usage{
-residual_plots(model_list, model_names = NULL, bwd = "nrd0",
+residual_plots(model_list, model_names = NULL, bw = "nrd0",
   thm = NULL)
 
-residual_density(model_list, model_names = NULL, bwd = "nrd0")
+residual_density(model_list, model_names = NULL, bw = "nrd0")
 
 residual_boxplot(model_list, model_names = NULL)
 }
@@ -19,7 +19,7 @@ residual_boxplot(model_list, model_names = NULL)
 \item{model_names}{A list of names for the regression models (default is
 \code{NULL}).}
 
-\item{bwd}{Bandwidth for density plots (default is \code{"nrd0"}).}
+\item{bw}{Bandwidth for density plots (default is \code{"nrd0"}).}
 
 \item{thm}{A ggplot2 theme for the output plots.}
 }
@@ -50,6 +50,6 @@ Model 2, Model 3, etc.).
 
  mList = list(m1, m2, m3, m4)
 
- residual_plots(model_list = mList, thm=theme_minimal())
+ residual_plots(model_list = mList, thm=ggplot2::theme_minimal())
 
 }

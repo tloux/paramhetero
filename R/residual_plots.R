@@ -11,7 +11,7 @@
 #'@param model_list A list of regression models.
 #'@param model_names A list of names for the regression models (default is
 #'  \code{NULL}).
-#'@param bwd Bandwidth for density plots (default is \code{"nrd0"}).
+#'@param bw Bandwidth for density plots (default is \code{"nrd0"}).
 #'@param thm A ggplot2 theme for the output plots.
 #'
 #'@return A residual plot for inputted regression models.
@@ -30,12 +30,12 @@
 #'
 #'  mList = list(m1, m2, m3, m4)
 #'
-#'  residual_plots(model_list = mList, thm=theme_minimal())
+#'  residual_plots(model_list = mList, thm=ggplot2::theme_minimal())
 #'
 #'@export
 
 
-residual_plots = function(model_list, model_names=NULL, bwd='nrd0', thm=NULL){
+residual_plots = function(model_list, model_names=NULL, bw='nrd0', thm=NULL){
 
   # check assumptions -------------------------------------
 
@@ -48,7 +48,7 @@ residual_plots = function(model_list, model_names=NULL, bwd='nrd0', thm=NULL){
 
   # create plots ------------------------------------------
 
-  resid_dens = residual_density(model_list, model_names, bw=bwd) +
+  resid_dens = residual_density(model_list, model_names, bw=bw) +
     ggplot2::guides(color=FALSE, fill=FALSE)
 
   resid_box = residual_boxplot(model_list, model_names) +
@@ -70,7 +70,7 @@ residual_plots = function(model_list, model_names=NULL, bwd='nrd0', thm=NULL){
 
 #'@export
 #'@rdname residual_plots
-residual_density = function(model_list, model_names=NULL, bwd='nrd0'){
+residual_density = function(model_list, model_names=NULL, bw='nrd0'){
 
 
   # check assumptions -------------------------------------
@@ -87,7 +87,7 @@ residual_density = function(model_list, model_names=NULL, bwd='nrd0'){
   resid_df = get_resid_df(model_list, model_names)
 
   ggplot2::ggplot(data=resid_df, ggplot2::aes(x=Residuals, color=Model, fill=Model)) +
-    ggplot2::geom_density(alpha=0.3, position='identity', bw=bwd) +
+    ggplot2::geom_density(alpha=0.3, position='identity', bw=bw) +
     ggplot2::ylab('') +
     ggplot2::theme(axis.text.y=ggplot2::element_blank(),
                    axis.ticks.y=ggplot2::element_blank())
