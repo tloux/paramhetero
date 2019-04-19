@@ -49,7 +49,7 @@ residual_plots = function(model_list, model_names=NULL, bwd='nrd0', thm=NULL){
   # create plots ------------------------------------------
 
   resid_dens = residual_density(model_list, model_names, bw=bwd) +
-    guides(color=FALSE, fill=FALSE)
+    ggplot2::guides(color=FALSE, fill=FALSE)
 
   resid_box = residual_boxplot(model_list, model_names) +
     ggplot2::guides(color='legend', fill='legend') +
