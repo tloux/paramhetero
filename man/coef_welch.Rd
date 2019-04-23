@@ -49,6 +49,14 @@ similarly for the parameters of \eqn{x_2}{x2}.)
 
 This is the workhorse function for \code{\link{coefficient_anova}}.
 }
+\examples{
+  coefs = c(-0.92, -1.13, -6.91, -0.09)
+  ses = c(1.44, 0.57, 1.65, 0.67)
+  grp_n = c(9, 16, 12, 13)
+
+  coef_welch(bs = coefs, vars = ses^2, ns = grp_n, p=2)
+
+}
 \references{
 Liu, H. "Comparing Welch's ANOVA, a Kruskal-Wallis Test and
   Traditional ANOVA in Case of Heterogeneity of Variance." Master's Thesis.

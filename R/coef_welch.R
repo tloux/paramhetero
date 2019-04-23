@@ -37,6 +37,13 @@
 #'   Traditional ANOVA in Case of Heterogeneity of Variance." Master's Thesis.
 #'   Available at \url{https://scholarscompass.vcu.edu/etd/3985/}.
 #'
+#' @examples
+#'   coefs = c(-0.92, -1.13, -6.91, -0.09)
+#'   ses = c(1.44, 0.57, 1.65, 0.67)
+#'   grp_n = c(9, 16, 12, 13)
+#'
+#'   coef_welch(bs = coefs, vars = ses^2, ns = grp_n, p=2)
+#'
 #' @importFrom stats weighted.mean pf
 #'
 #' @export
