@@ -15,7 +15,7 @@ Description: Performs statistical tests to compare coefficients and residual
     assessing heterogeneity in coefficients and residuals. Currently supports 
     linear and generalized linear models, as well as their multi-level and 
     complex survey-weighted variations from the 'lme4' and 'survey' packages, 
-    respectively. Reference: Li (2015, ISBN: 9781339132600).
+    respectively. Reference: Li (2015) <url:https://scholarscompass.vcu.edu/etd/3985/>.
 Depends:
     R (>= 3.5.0)
 Imports:
