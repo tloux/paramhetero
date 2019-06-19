@@ -14,7 +14,7 @@ model_list_checks = function(model_list){
 
   # class lm or glm
 
-  if(!(model_classes[[1]][1] %in% c('lm', 'glm'))){
+  if(!(model_classes[[1]][1] %in% c('lm', 'glm', 'lmerMod', 'glmerMod', 'svyglm'))){
     stop('All models must be the same class - either lm or glm.')
   }
 
