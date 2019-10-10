@@ -6,7 +6,7 @@ get_coefs = function(model){
 
 get_coefs.default = function(model){
 
-  int_index = grep(pattern='(I|i)ntercept', x=names(coef(mod)))
+  int_index = grep(pattern='(I|i)ntercept', x=names(coef(model)))
 
   if(length(int_ind) > 0){
     return(coef(model)[-int_index])
@@ -18,7 +18,7 @@ get_coefs.default = function(model){
 
 get_coefs.lmerMod = function(model){
 
-  int_index = grep(pattern='(I|i)ntercept', x=names(fixef(mod)))
+  int_index = grep(pattern='(I|i)ntercept', x=names(fixef(model)))
 
   if(length(int_ind > 0)){
     return(fixef(model)[-int_index])
