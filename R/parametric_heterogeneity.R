@@ -73,7 +73,7 @@ parametric_heterogeneity = function(model_list){
                    levene_results[res_stats])
 
   results = data.frame(test = c('Coefficient vector',
-                                anova_results$Coefficient,
+                                anova_results$B,
                                 'Residuals'),
                        results0)
 

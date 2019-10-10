@@ -89,7 +89,7 @@ residual_density = function(model_list, model_names=NULL, bw='nrd0'){
 
   # create plot -------------------------------------------
 
-  resid_df = get_resid_df(model_list, model_names)
+  resid_df = make_resid_df(model_list, model_names)
 
   ggplot2::ggplot(data=resid_df, ggplot2::aes(x=Residuals, color=Model, fill=Model)) +
     ggplot2::geom_density(alpha=0.3, position='identity', bw=bw) +
@@ -119,7 +119,7 @@ residual_boxplot = function(model_list, model_names=NULL){
 
   # create plot -------------------------------------------
 
-  resid_df = get_resid_df(model_list, model_names)
+  resid_df = make_resid_df(model_list, model_names)
 
   ggplot2::ggplot(data=resid_df, ggplot2::aes(x=Model, y=Residuals,
                                               color=Model, fill=Model)) +

@@ -52,15 +52,15 @@ residual_levene = function(model_list, model_names=NULL){
 
   M = length(model_list)
 
-  residList = lapply(model_list, function(m) m$residuals)
+  residList = lapply(model_list, function(m) get_resid(m))
 
-  nList = lapply(model_list, function(m) nrow(m$model))
+  nList = lapply(model_list, function(m) get_n(m))
   n = Reduce('+', nList)
 
-  dfList = lapply(model_list, function(m) m$df.residual)
+  dfList = lapply(model_list, function(m) get_df(m))
   dfSum = Reduce('+', dfList)
 
-  resid_sds = sapply(model_list, function(m) summary(m)$sigma)
+  resid_sds = sapply(model_list, function(m) sigma(m))
 
   if(is.null(model_names)){
     names(resid_sds) = paste('Model', 1:length(model_list))

@@ -52,16 +52,17 @@ coefficient_manova = function(model_list){
   # basic statistics --------------------------------------
 
   M = length(model_list)
-
-  bList = lapply(model_list, function(m) coefficients(m)[-1])
+  
+  bList = lapply(model_list, function(m) get_coefs(m))
+  covList = lapply(model_list, function(m) get_vcov(m))
+ 
   p = length(bList[[1]])
 
-  covList = lapply(model_list, function(m) vcov(m)[-1, -1])
 
-  nList = lapply(model_list, function(m) nrow(m$model))
+  nList = lapply(model_list, function(m) get_n(m))
   n = Reduce('+', nList)
 
-  dfList = lapply(model_list, function(m) m$df.residual)
+  dfList = lapply(model_list, function(m) get_df(m))
 
 
   # mean covariate vector ---------------------------------

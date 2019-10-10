@@ -57,17 +57,19 @@ coefficient_anova = function(model_list, model_names = NULL, padj=p.adjust.metho
 
   if(is.null(model_names)) model_names = paste('Model', 1:length(model_list))
 
+  # intercept term handling -------------------------------
   b_mat = sapply(model_list,function(m){
-    m$coefficients[-1]                                # remove intercept
-  })
-  colnames(b_mat) = model_names
-
+    get_coefs(m)
+    })                                
   var_mat = sapply(model_list,function(m){
-    m$df.residual * diag(vcov(m))[-1]                 # remove intercept
+    get_df(m) * diag(get_vcov(m))               
   })
-
+  
+  colnames(b_mat) = model_names
+  
+  
   n_vect = sapply(model_list, function(m){
-    length(m$residuals)
+    length(get_resid(m))
   })
 
   anova_mat0 = sapply(1:nrow(b_mat), function(i){
@@ -79,8 +81,8 @@ coefficient_anova = function(model_list, model_names = NULL, padj=p.adjust.metho
   anova_mat[, ncol(anova_mat)] = p.adjust(anova_mat[, ncol(anova_mat)],
                                           method=padj)
   rownames(anova_mat) = NULL
-  anova_res = data.frame(Coefficient = rownames(b_mat), anova_mat)
-  anova_res$Coefficient = as.character(anova_res$Coefficient)
+  anova_res = data.frame(B = rownames(b_mat), anova_mat)
+  anova_res$B = as.character(anova_res$B)
 
 
   # return results ----------------------------------------

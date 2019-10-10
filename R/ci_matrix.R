@@ -55,10 +55,10 @@ ci_matrix = function(model_list, model_names = NULL, levels = c(0.95, 0.50)){
   if(is.null(model_names)) model_names = paste('Model', 1:length(model_list))
 
   levels <- sort(levels, decreasing = TRUE)
-  varnames = names(coef(model_list[[1]]))[names(coef(model_list[[1]])) != '(Intercept)']
+  varnames = names(get_coefs(model_list[[1]]))
   ests = list()
   modlist0 <- sapply(model_names, function(n){
-    rep(n, length(names(coef(model_list[[1]]))) - 1)})
+    rep(n, length(names(get_coefs(model_list[[1]]))))})
   modlist0 <- unname(modlist0)
   repmodlist <- sapply(modlist0, function(m){rbind(m)})
 
@@ -68,11 +68,11 @@ ci_matrix = function(model_list, model_names = NULL, levels = c(0.95, 0.50)){
     if(m == 1){
       ci1 <- confint(object = model_list[[1]], parm = varnames,
                      level = levels[1])
-      ests <-  coef(model_list[[m]])[varnames]
+      ests <-  get_coefs(model_list[[m]])[varnames]
     }else{
       ci1 <- rbind(ci1, confint(object = model_list[[m]], parm = varnames,
                                 level = levels[1]))
-      ests <- append(ests, coef(model_list[[m]])[varnames])
+      ests <- append(ests, get_coefs(model_list[[m]])[varnames])
     }
 
     if(length(levels) == 1 && m == length(model_list)){
