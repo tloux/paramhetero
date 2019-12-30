@@ -1,6 +1,6 @@
 Package: paramhetero
 Title: Numeric and Visual Comparisons of Heterogeneity in Parametric Models
-Version: 0.1.4
+Version: 0.1.5
 Authors@R: c(
     person(given = "Travis",
            family = "Loux",
@@ -21,7 +21,9 @@ Depends:
 Imports:
     ggplot2,
     ggpubr,
-    stats
+    stats, 
+    lme4, 
+    survey
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

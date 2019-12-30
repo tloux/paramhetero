@@ -1,3 +1,4 @@
+#'@importFrom stats residuals
 
 get_resid = function(model){
   UseMethod('get_resid')

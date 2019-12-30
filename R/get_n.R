@@ -1,3 +1,4 @@
+#'@importFrom stats fitted.values
 
 get_n = function(model){
   UseMethod('get_n')

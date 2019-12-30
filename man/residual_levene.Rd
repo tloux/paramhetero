@@ -23,7 +23,7 @@ models using Levene's test.
 }
 \details{
 Levene's test is often suggested as a diagnostic check for homoskedasticity in
-ANOVA analyses. This function works for linear regression (\code{\link{lm}})
+ANOVA analyses. This function works for linear models (\code{\link{lm}})
 only.
 }
 \examples{

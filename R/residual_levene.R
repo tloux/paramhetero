@@ -4,7 +4,7 @@
 #'models using Levene's test.
 #'
 #'Levene's test is often suggested as a diagnostic check for homoskedasticity in
-#'ANOVA analyses. This function works for linear regression (\code{\link{lm}})
+#'ANOVA analyses. This function works for linear models (\code{\link{lm}})
 #'only.
 #'
 #'@param model_list A list of regression models.
@@ -31,7 +31,7 @@
 #'
 #'  residual_levene(model_list = mList)
 #'
-#'@importFrom stats pf
+#'@importFrom stats pf sigma
 #'
 #'@export
 

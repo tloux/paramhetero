@@ -9,13 +9,14 @@ model_list_checks = function(model_list){
   # all same class
 
   if(length(unique(model_classes)) != 1){
-    stop('All models must be the same class - either lm or glm.')
+    stop('All models must be the same class, one of lm, glm, lmerMod, glmerMod.')
   }
 
-  # class lm or glm
+  # class lm, glm, lmerMod, glmerMod, svyglm
 
-  if(!(model_classes[[1]][1] %in% c('lm', 'glm'))){
-    stop('All models must be the same class - either lm or glm.')
+  if(!(model_classes[[1]][1] %in%
+       c('lm', 'glm', 'lmerMod', 'glmerMod', 'svyglm'))){
+    stop('All models must be the same class, one of lm, glm, lmerMod, glmerMod.')
   }
 
   # if glm, same family and link function

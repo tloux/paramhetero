@@ -29,7 +29,7 @@ Compare the regression coefficients of a predictor across models.
 \details{
 Both \code{coef_anova} and  \code{coef_welch} compare the coefficient of
 a predictor across multiple models, testing the null hypothesis that all
-parameters are equal. \code{coef_anova} assumes heterogeneity across models,
+parameters are equal. \code{coef_anova} assumes homogeneity across models,
 while \code{coef_welch} allows for heterogeneity in the natural variation.
 Currently, only \code{coef_welch} is implemented as it is a slightly more
 generally applicable test. An option for \code{coef_anova} may appear in
