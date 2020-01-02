@@ -41,6 +41,10 @@ residual_plots = function(model_list, model_names=NULL, bw='nrd0', thm=NULL){
 
   model_list_checks(model_list)
 
+  if(class(model_list[[1]])[1] == 'svyglm'){
+    warning('Visualization does not use survey weights.')
+  }
+
   if(!is.null(model_names)){
     model_names_checks(model_list, model_names)
   }
@@ -77,6 +81,10 @@ residual_density = function(model_list, model_names=NULL, bw='nrd0'){
 
   model_list_checks(model_list)
 
+  if(class(model_list[[1]])[1] == 'svyglm'){
+    warning('Visualization does not use survey weights.')
+  }
+
   if(!is.null(model_names)){
     model_names_checks(model_list, model_names)
   }
@@ -106,6 +114,10 @@ residual_boxplot = function(model_list, model_names=NULL){
   # check assumptions -------------------------------------
 
   model_list_checks(model_list)
+
+  if(class(model_list[[1]])[1] == 'svyglm'){
+    warning('Visualization does not use survey weights.')
+  }
 
   if(!is.null(model_names)){
     model_names_checks(model_list, model_names)

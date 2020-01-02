@@ -20,7 +20,7 @@ get_vcov.default = function(model){
 }
 
 
-get_coefs.lmerMod = function(model){
+get_vcov.lmerMod = function(model){
 
   int_index = grep(pattern='(I|i)ntercept', x=names(fixef(model)))
 
@@ -32,7 +32,7 @@ get_coefs.lmerMod = function(model){
 }
 
 
-get_coefs.glmerMod = function(model){
+get_vcov.glmerMod = function(model){
 
   int_index = grep(pattern='(I|i)ntercept', x=names(fixef(model)))
 

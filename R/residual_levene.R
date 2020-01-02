@@ -43,6 +43,15 @@ residual_levene = function(model_list, model_names=NULL){
 
   model_list_checks(model_list)
 
+  model_family = family(model_list[[1]])$family
+  if(model_family != 'gaussian'){
+    stop('Residual test only appropriate for normally distributed errors.')
+  }
+
+  if(class(model_list[[1]])[1] == 'svyglm'){
+    warning('Analysis does not use survey weights.')
+  }
+
   if(!is.null(model_names)){
     model_names_checks(model_list, model_names)
   }

@@ -59,7 +59,7 @@ parametric_heterogeneity = function(model_list){
 
   # test residual SD --------------------------------------
 
-  if(class(model_list[[1]]) == 'lm'){
+  if(family(model_list[[1]])$family == 'gaussian'){
     levene_results = residual_levene(model_list = model_list)
   }
 
@@ -68,14 +68,24 @@ parametric_heterogeneity = function(model_list){
 
   res_stats = c('f', 'df1', 'df2', 'p')
 
-  results0 = rbind(manova_results[res_stats],
-                   anova_results[, res_stats],
-                   levene_results[res_stats])
+  if(family(model_list[[1]])$family == 'gaussian'){
+    results0 = rbind(manova_results[res_stats],
+                     anova_results[, res_stats],
+                     levene_results[res_stats])
 
-  results = data.frame(test = c('Coefficient vector',
-                                anova_results$B,
-                                'Residuals'),
-                       results0)
+    results = data.frame(test = c('Coefficient vector',
+                                  anova_results$B,
+                                  'Residuals'),
+                         results0)
+  }else{
+    message('Residual test only appropriate for normally distributed errors so not performed.')
+    results0 = rbind(manova_results[res_stats],
+                     anova_results[, res_stats])
+
+    results = data.frame(test = c('Coefficient vector',
+                                  anova_results$B),
+                         results0)
+  }
 
 
   # return results ----------------------------------------
