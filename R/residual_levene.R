@@ -43,7 +43,7 @@ residual_levene = function(model_list, model_names=NULL){
 
   model_list_checks(model_list)
 
-  model_family = family(model_list[[1]])$family
+  model_family = stats::family(model_list[[1]])$family
   if(model_family != 'gaussian'){
     stop('Residual test only appropriate for normally distributed errors.')
   }

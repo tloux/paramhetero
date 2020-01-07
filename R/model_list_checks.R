@@ -21,8 +21,8 @@ model_list_checks = function(model_list){
 
   # same family and link function
 
-  fams = sapply(model_list, function(m) family(m)$family)
-  links = sapply(model_list, function(m) family(m)$link)
+  fams = sapply(model_list, function(m) stats::family(m)$family)
+  links = sapply(model_list, function(m) stats::family(m)$link)
 
   if(any(fams != fams[1]) | any(links != links[1])){
     stop('All models must be same family with same link function')

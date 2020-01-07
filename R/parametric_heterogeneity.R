@@ -59,7 +59,7 @@ parametric_heterogeneity = function(model_list){
 
   # test residual SD --------------------------------------
 
-  if(family(model_list[[1]])$family == 'gaussian'){
+  if(stats::family(model_list[[1]])$family == 'gaussian'){
     levene_results = residual_levene(model_list = model_list)
   }
 
@@ -68,7 +68,7 @@ parametric_heterogeneity = function(model_list){
 
   res_stats = c('f', 'df1', 'df2', 'p')
 
-  if(family(model_list[[1]])$family == 'gaussian'){
+  if(stats::family(model_list[[1]])$family == 'gaussian'){
     results0 = rbind(manova_results[res_stats],
                      anova_results[, res_stats],
                      levene_results[res_stats])

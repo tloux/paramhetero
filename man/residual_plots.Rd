@@ -6,8 +6,7 @@
 \alias{residual_boxplot}
 \title{Plot residuals.}
 \usage{
-residual_plots(model_list, model_names = NULL, bw = "nrd0",
-  thm = NULL)
+residual_plots(model_list, model_names = NULL, bw = "nrd0", thm = NULL)
 
 residual_density(model_list, model_names = NULL, bw = "nrd0")
 

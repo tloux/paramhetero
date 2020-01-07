@@ -4,8 +4,7 @@
 \alias{coefficient_anova}
 \title{Compare coefficients of all shared predictors across models via ANOVA.}
 \usage{
-coefficient_anova(model_list, model_names = NULL,
-  padj = p.adjust.methods)
+coefficient_anova(model_list, model_names = NULL, padj = p.adjust.methods)
 }
 \arguments{
 \item{model_list}{A list of regression models.}

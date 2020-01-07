@@ -1,6 +1,5 @@
 ## Test environments
 
-* local Windows 10 install, R 3.5.3
 * rhub
 * win-builder
 

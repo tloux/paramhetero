@@ -4,8 +4,12 @@
 \alias{coefficient_forestplot}
 \title{Create forest plot of model coefficients with confidence intervals.}
 \usage{
-coefficient_forestplot(model_list, model_names = NULL, levels = c(0.95,
-  0.5), horiz = TRUE)
+coefficient_forestplot(
+  model_list,
+  model_names = NULL,
+  levels = c(0.95, 0.5),
+  horiz = TRUE
+)
 }
 \arguments{
 \item{model_list}{A list of regression models.}
