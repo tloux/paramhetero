@@ -15,17 +15,19 @@ model_list_checks = function(model_list){
   # class one of lm, glm, lmerMod, glmerMod, svyglm
 
   if(!(model_classes[[1]][1] %in%
-       c('lm', 'glm', 'lmerMod', 'glmerMod', 'svyglm'))){
-    stop('All models must be the same class, one of lm, glm, lmerMod, glmerMod, svyglm.')
+       c('lm', 'glm', 'lmerMod', 'glmerMod', 'svyglm', 'svyolr'))){
+    stop('All models must be the same class, one of lm, glm, lmerMod, glmerMod, svyglm, svyolr.')
   }
 
   # same family and link function
 
-  fams = sapply(model_list, function(m) stats::family(m)$family)
-  links = sapply(model_list, function(m) stats::family(m)$link)
+  if(model_classes[[1]][1] != 'svyolr'){
+    fams = sapply(model_list, function(m) stats::family(m)$family)
+    links = sapply(model_list, function(m) stats::family(m)$link)
 
-  if(any(fams != fams[1]) | any(links != links[1])){
-    stop('All models must be same family with same link function')
+    if(any(fams != fams[1]) | any(links != links[1])){
+      stop('All models must be same family with same link function')
+    }
   }
 
 

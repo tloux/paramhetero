@@ -8,3 +8,8 @@ get_n = function(model){
 get_n.default = function(model){
   return(length(fitted.values(model)))
 }
+
+
+get_n.svyolr = function(model){
+  return(nrow(fitted.values(model)))
+}

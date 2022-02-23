@@ -60,16 +60,16 @@ coefficient_anova = function(model_list, model_names = NULL, padj=p.adjust.metho
   # intercept term handling -------------------------------
   b_mat = sapply(model_list,function(m){
     get_coefs(m)
-    })                                
+    })
   var_mat = sapply(model_list,function(m){
-    get_df(m) * diag(get_vcov(m))               
+    get_df(m) * diag(get_vcov(m))
   })
-  
+
   colnames(b_mat) = model_names
-  
-  
+
+
   n_vect = sapply(model_list, function(m){
-    length(get_resid(m))
+    get_n(m) # was length(get_resid(m))
   })
 
   anova_mat0 = sapply(1:nrow(b_mat), function(i){

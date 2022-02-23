@@ -1,6 +1,6 @@
 Package: paramhetero
 Title: Numeric and Visual Comparisons of Heterogeneity in Parametric Models
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
     person(given = "Travis",
            family = "Loux",
@@ -13,9 +13,9 @@ Authors@R: c(
 Description: Performs statistical tests to compare coefficients and residual 
     variance across multiple models. Also provides graphical methods for 
     assessing heterogeneity in coefficients and residuals. Currently supports 
-    linear and generalized linear models, as well as their multi-level and 
-    complex survey-weighted variations from the 'lme4' and 'survey' packages, 
-    respectively. Reference: Li (2015) <https://scholarscompass.vcu.edu/etd/3985/>.
+    linear and generalized linear models, as well as 'lmer' and 'glmer' models 
+    from the 'lme4' package and 'svyglm' and 'svyolr' models from the 'survey' 
+    package. Reference: Li (2015) <https://scholarscompass.vcu.edu/etd/3985/>.
 Depends:
     R (>= 3.5.0)
 Imports:
