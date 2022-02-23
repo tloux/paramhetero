@@ -1,6 +1,6 @@
 #'@importFrom stats coef vcov
 #'@importFrom lme4 fixef
-
+#'@importFrom survey vcov
 
 
 get_vcov = function(model){
