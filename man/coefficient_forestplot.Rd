@@ -2,23 +2,21 @@
 % Please edit documentation in R/coefficient_forestplot.R
 \name{coefficient_forestplot}
 \alias{coefficient_forestplot}
-\title{Create forest plot of model coefficients with confidence intervals.}
+\title{Create forest plot of model coefficients with confidence intervals}
 \usage{
 coefficient_forestplot(
   model_list,
   model_names = NULL,
-  levels = c(0.95, 0.5),
+  conflevel = 0.95,
   horiz = TRUE
 )
 }
 \arguments{
 \item{model_list}{A list of regression models.}
 
-\item{model_names}{A list of names for the regression models (default is
-\code{NULL}).}
+\item{model_names}{A list of names for the regression models.}
 
-\item{levels}{A list of levels of confidence for confidence intervals (max 2
-levels).}
+\item{conflevel}{Confidence level for intervals.}
 
 \item{horiz}{Toggle whether confidence intervals are displayed horizontally or
 vertically. Default is set to \code{TRUE}.}
@@ -34,8 +32,7 @@ Create a ggplot forest plot of model coefficients with confidence intervals.
 The forest plot groups variables along the axis determined by the \code{horiz}
 parameter and colors the data by model. If \code{model_names = NULL}, the
 default, models are numbered sequentially in the order they appear in
-\code{model_list} (Model 1, Model 2, Model 3, etc.). If two confidence levels
-are provided the shorter interval is drawn with a thicker line.
+\code{model_list} (Model 1, Model 2, Model 3, etc.).
 }
 \examples{
  states = as.data.frame(state.x77)
