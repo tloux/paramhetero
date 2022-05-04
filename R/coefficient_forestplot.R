@@ -71,13 +71,17 @@ coefficient_forestplot = function(model_list, model_names = NULL,
       last_coef = length(coef(model_list[[m]])) - n_zeta
       tmp = as.data.frame(confint(model_list[[m]],
                                   level=conflevel)[1:last_coef, ])
+      tmp$Estimate = coef(model_list[[m]])[1:last_coef]
+      tmp$Variable = rownames(tmp)
+      tmp$Model = model_names[m]
+
     }else{
       tmp = as.data.frame(confint(model_list[[m]], level=conflevel))
-    }
 
-    tmp$Estimate = coef(model_list[[m]])
-    tmp$Variable = rownames(tmp)
-    tmp$Model = model_names[m]
+      tmp$Estimate = coef(model_list[[m]])
+      tmp$Variable = rownames(tmp)
+      tmp$Model = model_names[m]
+    }
 
     tmp = tmp[tmp$Variable != '(Intercept)', ]
     rownames(tmp) = NULL
