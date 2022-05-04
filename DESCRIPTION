@@ -19,7 +19,8 @@ Depends:
 Imports:
     ggplot2,
     MASS,
-    stats
+    stats,
+    survey
 License: GPL-3
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2

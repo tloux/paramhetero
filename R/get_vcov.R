@@ -18,10 +18,10 @@ get_vcov.default = function(model){
 
 
 get_vcov.svyolr = function(model){
-  
+
   n_zeta = length(model$lev) - 1
   last_coef = length(coef(model)) - n_zeta
-  
+
   pred_vcov = survey:::vcov.svyolr(model)[1:last_coef, 1:last_coef]
   return(pred_vcov)
 }
