@@ -5,15 +5,15 @@ model_list_checks = function(model_list){
   # check model form ----
 
   models_allowed = c('lm', 'glm', 'svyglm', 'svyolr')
-  
+
   allowed_char = paste(models_allowed, collapse=', ')
-  model_class_error = paste0('All models must be the same class, one of ', 
+  model_class_error = paste0('All models must be the same class, one of ',
                              allowed_char, '.')
-  
+
   model_classes = lapply(model_list, class)
-  
+
   # all same class
-  
+
   if(length(unique(model_classes)) != 1){
     stop(model_class_error)
   }
@@ -26,11 +26,13 @@ model_list_checks = function(model_list){
 
   # same family and link function
 
-  fams = sapply(model_list, function(m) stats::family(m)$family)
-  links = sapply(model_list, function(m) stats::family(m)$link)
+  if(model_classes[[1]][1] != 'svyolr'){
+    fams = sapply(model_list, function(m) stats::family(m)$family)
+    links = sapply(model_list, function(m) stats::family(m)$link)
 
-  if(any(fams != fams[1]) | any(links != links[1])){
-    stop('All models must be same family with same link function')
+    if(any(fams != fams[1]) | any(links != links[1])){
+      stop('All models must be same family with same link function')
+    }
   }
 
 
