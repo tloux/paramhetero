@@ -1,4 +1,5 @@
 #'@importFrom stats coef vcov
+#'@importFrom survey vcov
 
 get_vcov = function(model){
   UseMethod('get_vcov')
