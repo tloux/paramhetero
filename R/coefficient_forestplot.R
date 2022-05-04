@@ -67,8 +67,8 @@ coefficient_forestplot = function(model_list, model_names = NULL,
   ci_list = lapply(1:length(model_list), function(m){
 
     if(class(model_list[[m]]) == 'svyolr'){
-      n_zeta = length(model$lev) - 1
-      last_coef = length(coef(model)) - n_zeta
+      n_zeta = length(model_list[[m]]$lev) - 1
+      last_coef = length(coef(model_list[[m]])) - n_zeta
       tmp = as.data.frame(confint(model_list[[m]],
                                   level=conflevel)[1:last_coef, ])
     }else{
