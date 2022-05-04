@@ -4,18 +4,24 @@ model_list_checks = function(model_list){
 
   # check model form ----
 
+  models_allowed = c('lm', 'glm', 'svyglm', 'svyolr')
+  
+  allowed_char = paste(models_allowed, collapse=', ')
+  model_class_error = paste0('All models must be the same class, one of ', 
+                             allowed_char, '.')
+  
   model_classes = lapply(model_list, class)
-
+  
   # all same class
-
+  
   if(length(unique(model_classes)) != 1){
-    stop('All models must be the same class, one of lm, glm.')
+    stop(model_class_error)
   }
 
-  # class one of lm, glm
+  # class one of allowed classes
 
-  if(!(model_classes[[1]][1] %in% c('lm', 'glm'))){
-    stop('All models must be the same class, one of lm, glm.')
+  if(!(model_classes[[1]][1] %in% models_allowed)){
+    stop(model_class_error)
   }
 
   # same family and link function

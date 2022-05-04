@@ -1,6 +1,6 @@
 Package: paramhetero
 Title: Numeric and Visual Comparisons of Heterogeneity in Parametric Models
-Version: 1.0.0
+Version: 1.1.0
 Authors@R: c(
     person(given = "Travis",
            family = "Loux",
@@ -13,7 +13,7 @@ Authors@R: c(
 Description: Performs statistical tests to compare coefficients and residual 
     variance across models. Also provides graphical methods for 
     assessing heterogeneity in coefficients and residuals. Currently supports 
-    linear and generalized linear models.
+    linear models, generalized linear models, and their survey-weighted analogues.
 Depends:
     R (>= 4.0.0)
 Imports:

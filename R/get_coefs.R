@@ -15,3 +15,13 @@ get_coefs.default = function(model){
     return(coef(model))
   }
 }
+
+
+get_coefs.svyolr = function(model){
+  
+  n_zeta = length(model$lev) - 1
+  last_coef = length(coef(model)) - n_zeta
+  
+  pred_coefs = coef(model)[1:last_coef]
+  return(pred_coefs)
+}
