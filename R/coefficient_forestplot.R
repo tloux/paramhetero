@@ -100,12 +100,13 @@ coefficient_forestplot = function(model_list, model_names = NULL,
     fplot = ggplot(data = confints, aes(x = Estimate, y = Variable, colour = Model)) +
       geom_pointrange(aes(xmin = ci_lo, xmax = ci_hi),
                       position = position_dodge2(width = mydodge, reverse = TRUE)) +
-      scale_y_discrete(limits=rev)
+      scale_y_discrete(limits = rev(unique(confints$Variable)))
 
   }else{
     fplot = ggplot(data = confints, aes(x = Variable, y = Estimate, colour = Model)) +
       geom_pointrange(aes(ymin = ci_lo, ymax = ci_hi),
-                      position = position_dodge(width = mydodge))
+                      position = position_dodge(width = mydodge)) +
+      scale_x_discrete(limits = unique(confints$Variable))
   }
 
 
