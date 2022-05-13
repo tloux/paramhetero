@@ -7,6 +7,7 @@
 coefficient_forestplot(
   model_list,
   model_names = NULL,
+  varlabs = NULL,
   conflevel = 0.95,
   horiz = TRUE
 )
@@ -15,6 +16,8 @@ coefficient_forestplot(
 \item{model_list}{A list of regression models.}
 
 \item{model_names}{A list of names for the regression models.}
+
+\item{varlabs}{A vector of labels for model variables.}
 
 \item{conflevel}{Confidence level for intervals.}
 

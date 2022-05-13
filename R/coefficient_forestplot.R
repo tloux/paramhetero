@@ -9,6 +9,7 @@
 #'
 #'@param model_list A list of regression models.
 #'@param model_names A list of names for the regression models.
+#'@param varlabs A vector of labels for model variables.
 #'@param conflevel Confidence level for intervals.
 #'@param horiz Toggle whether confidence intervals are displayed horizontally or
 #'  vertically. Default is set to \code{TRUE}.
@@ -42,6 +43,7 @@
 
 
 coefficient_forestplot = function(model_list, model_names = NULL,
+                                  varlabs = NULL,
                                   conflevel=0.95, horiz = TRUE){
 
   # check assumptions ----
@@ -96,17 +98,21 @@ coefficient_forestplot = function(model_list, model_names = NULL,
 
   mydodge = 0.2 * (length(model_list) - 1)
 
+  if(is.null(varlabs)) varlabs = unique(confints$Variable)
+
   if(horiz){
     fplot = ggplot(data = confints, aes(x = Estimate, y = Variable, colour = Model)) +
       geom_pointrange(aes(xmin = ci_lo, xmax = ci_hi),
                       position = position_dodge2(width = mydodge, reverse = TRUE)) +
-      scale_y_discrete(limits = rev(unique(confints$Variable)))
+      scale_y_discrete(limits = rev(unique(confints$Variable)),
+                       labels = rev(varlabs))
 
   }else{
     fplot = ggplot(data = confints, aes(x = Variable, y = Estimate, colour = Model)) +
       geom_pointrange(aes(ymin = ci_lo, ymax = ci_hi),
                       position = position_dodge(width = mydodge)) +
-      scale_x_discrete(limits = unique(confints$Variable))
+      scale_x_discrete(limits = unique(confints$Variable),
+                       labels = varlabs)
   }
 
 
